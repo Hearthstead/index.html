@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planting Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Planting Guide</h1>
+        <p>Select the plant type and your growth zone to find the best time to plant:</p>
+        <label for="plantType">Plant Type:</label>
+        <select id="plantType">
+            <option value="" disabled selected>Select a plant</option>
+            <option value="tomatoes">Tomatoes</option>
+            <option value="cucumbers">Cucumbers</option>
+            <option value="bellPeppers">Bell Peppers</option>
+            <option value="jalapenos">Jalapeños</option>
+            <option value="blueberries">Blueberries</option>
+            <option value="raspberries">Raspberries</option>
+            <option value="blackberries">Blackberries</option>
+            <option value="sweetPeppers">Sweet Peppers</option>
+            <option value="carrots">Carrots</option>
+            <option value="onions">Onions</option>
+            <option value="garlic">Garlic</option>
+            <option value="sweetPotatoes">Sweet Potatoes</option>
+            <option value="potatoes">Potatoes</option>
+            <option value="marigolds">Marigolds</option>
+        </select>
+        <br><br>
+        <label for="growthZone">Growth Zone:</label>
+        <select id="growthZone">
+            <option value="" disabled selected>Select your zone</option>
+            <option value="3">Zone 3</option>
+            <option value="4">Zone 4</option>
+            <option value="5">Zone 5</option>
+            <option value="6">Zone 6</option>
+            <option value="7">Zone 7</option>
+            <option value="8">Zone 8</option>
+            <option value="9">Zone 9</option>
+            <option value="10">Zone 10</option>
+        </select>
+        <br>
+        <button onclick="getPlantingTime()">Find Planting Time</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function getPlantingTime() {
+            const plantType = document.getElementById('plantType').value;
+            const zone = document.getElementById('growthZone').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!plantType || !zone) {
+                resultDiv.textContent = 'Please select both a plant type and a growth zone.';
+                return;
+            }
+
+            const plantingTimes = {
+                tomatoes: {
+                    3: 'Late May to early June',
+                    4: 'Mid to late May',
+                    5: 'Early to mid May',
+                    6: 'Late April to early May',
+                    7: 'Mid to late April',
+                    8: 'Early to mid April',
+                    9: 'Late March to early April',
+                    10: 'Early to mid March'
+                },
+                cucumbers: {
+                    3: 'Late May to early June',
+                    4: 'Mid to late May',
+                    5: 'Early to mid May',
+                    6: 'Late April to early May',
+                    7: 'Mid to late April',
+                    8: 'Early to mid April',
+                    9: 'Late March to early April',
+                    10: 'Early to mid March'
+                },
+                bellPeppers: {
+                    3: 'Early June after the last frost date',
+                    4: 'Late May to early June',
+                    5: 'Mid to late May',
+                    6: 'Early to mid May',
+                    7: 'Late April to early May',
+                    8: 'Mid to late April',
+                    9: 'Early to mid April',
+                    10: 'Late March to early April'
+                },
+                jalapenos: {
+                    3: 'Early June, after the last frost date',
+                    4: 'Late May to early June',
+                    5: 'Mid to late May',
+                    6: 'Early to mid May',
+                    7: 'Late April to early May',
+                    8: 'Mid to late April',
+                    9: 'Early to mid April',
+                    10: 'Late March to early April'
+                },
+                blueberries: {
+                    3: 'Early spring or fall',
+                    4: 'Early spring or fall',
+                    5: 'Early spring or fall',
+                    6: 'Early spring or fall',
+                    7: 'Early spring or fall',
+                    8: 'Early spring or fall',
+                    9: 'Fall planting is best',
+                    10: 'Fall planting is best'
+                },
+                raspberries: {
+                    3: 'Early spring',
+                    4: 'Early spring',
+                    5: 'Early spring',
+                    6: 'Early spring',
+                    7: 'Early spring',
+                    8: 'Early spring',
+                    9: 'Late winter or early spring',
+                    10: 'Late winter or early spring'
+                },
+                blackberries: {
+                    3: 'Early spring',
+                    4: 'Early spring',
+                    5: 'Early spring',
+                    6: 'Early spring',
+                    7: 'Early spring',
+                    8: 'Early spring',
+                    9: 'Late winter or early spring',
+                    10: 'Late winter or early spring'
+                },
+                sweetPeppers: {
+                    3: 'Early June after the last frost date',
+                    4: 'Late May to early June',
+                    5: 'Mid to late May',
+                    6: 'Early to mid May',
+                    7: 'Late April to early May',
+                    8: 'Mid to late April',
+                    9: 'Early to mid April',
+                    10: 'Late March to early April'
+                },
+                carrots: {
+                    3: 'Late April to early May',
+                    4: 'Mid April to early May',
+                    5: 'Early to mid April',
+                    6: 'Mid to late March',
+                    7: 'Early to mid March',
+                    8: 'Late February to early March',
+                    9: 'Mid February to late February',
+                    10: 'Late January to early February'
+                },
+                onions: {
+                    3: 'Early to mid April',
+                    4: 'Late March to early April',
+                    5: 'Mid to late March',
+                    6: 'Early to mid March',
+                    7: 'Late February to early March',
+                    8: 'Mid to late February',
+                    9: 'Early to mid February',
+                    10: 'Late January to early February'
+                },
+                garlic: {
+                    3: 'Mid September to early October',
+                    4: 'Mid September to early October',
+                    5: 'Mid September to early October',
+                    6: 'Mid September to early October',
+                    7: 'Mid September to early October',
+                    8: 'Late October to November',
+                    9: 'Late October to November',
+                    10: 'Late October to November'
+                },
+                sweetPotatoes: {
+                    3: 'Late May to early June',
+                    4: 'Mid May to early June',
+                    5: 'Early to mid May',
+                    6: 'Mid April to early May',
+                    7: 'Early to mid April',
+                    8: 'Late March to early April',
+                    9: 'Early to mid March',
+                    10: 'Late February to early March'
+                },
+                potatoes: {
+                    3: 'Late April to early May',
+                    4: 'Mid April to early May',
+                    5: 'Early to mid April',
+                    6: 'Mid to late March',
+                    7: 'Early to mid March',
+                    8: 'Late February to early March',
+                    9: 'Mid February to late February',
+                    10: 'Late January to early February'
+                },
+                marigolds: {
+                    3: 'Late May after the last frost date',
+                    4: 'Mid May to late May',
+                    5: 'Early to mid May',
+                    6: 'Late April to early May',
+                    7: 'Mid to late April',
+                    8: 'Early to mid April',
+                    9: 'Late March to early April',
+                    10: 'Early to mid March'
+                }
+            };
+
+            const plantingTime = plantingTimes[plantType][zone];
+            resultDiv.textContent = `Best time to plant ${plantType.replace(/([A-Z])/g, ' $1').toLowerCase()}: ${plantingTime}`;
+        }
+    </script>
+</body>
+</html>
