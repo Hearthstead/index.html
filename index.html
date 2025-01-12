@@ -30,6 +30,40 @@
             border: 2px solid black;
             border-radius: 10px;
         }
+          /* Scrolling message styles */
+        .scrolling-message {
+            width: 100%;
+            background-color: #ffcc00;
+            color: #000;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .scrolling-message span {
+            display: inline-block;
+            animation: scroll-left 10s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scrolling message -->
+    <div class="scrolling-message">
+        <span>Welcome to Hearthstead Tips. Let's Grow Together!</span>
+    </div>
+
     </style>
 </head>
 <body>
