@@ -129,64 +129,113 @@
         <div class="result" id="wateringResult"></div>
     </div>
 
-    <script>
-        function getPlantingTime() {
-            const plantType = document.getElementById('plantType').value;
-            const zone = document.getElementById('growthZone').value;
-            const plantingResult = document.getElementById('plantingResult');
+   <script>
+    function getPlantingTime() {
+        const plantType = document.getElementById('plantType').value;
+        const zone = document.getElementById('growthZone').value;
+        const plantingResult = document.getElementById('plantingResult');
 
-            if (!plantType || !zone) {
-                plantingResult.textContent = 'Please select both a plant type and a growth zone.';
-                return;
-            }
+        if (!plantType || !zone) {
+            plantingResult.textContent = 'Please select both a plant type and a growth zone.';
+            return;
+        }
 
-            const plantingTimes = {
-                tomatoes: {
-                    3: 'Late May to early June',
-                    4: 'Mid to late May',
-                    5: 'Early to mid May',
-                    6: 'Late April to early May',
-                    7: 'Mid to late April',
-                    8: 'Early to mid April',
-                    9: 'Late March to early April',
-                    10: 'Early to mid March'
-                },
-                // Add the rest of the plants here...
-            };
+        const plantingTimes = {
+            tomatoes: {
+                3: 'Late May to early June',
+                4: 'Mid to late May',
+                5: 'Early to mid May',
+                6: 'Late April to early May',
+                7: 'Mid to late April',
+                8: 'Early to mid April',
+                9: 'Late March to early April',
+                10: 'Early to mid March',
+            },
+            cucumbers: {
+                3: 'Late May to early June',
+                4: 'Mid to late May',
+                5: 'Early to mid May',
+                6: 'Late April to early May',
+                7: 'Mid to late April',
+                8: 'Early to mid April',
+                9: 'Late March to early April',
+                10: 'Early March',
+            },
+            bellPeppers: {
+                3: 'Late May to early June',
+                4: 'Mid May',
+                5: 'Early May',
+                6: 'Late April',
+                7: 'Mid April',
+                8: 'Early April',
+                9: 'Late March',
+                10: 'Early March',
+            },
+            carrots: {
+                3: 'Late April to early May',
+                4: 'Mid April',
+                5: 'Early April',
+                6: 'Late March',
+                7: 'Mid March',
+                8: 'Early March',
+                9: 'Late February',
+                10: 'Early February',
+            },
+            garlic: {
+                3: 'Late September to early October',
+                4: 'Mid September',
+                5: 'Early September',
+                6: 'Late August',
+                7: 'Mid August',
+                8: 'Early August',
+                9: 'Late July',
+                10: 'Early July',
+            },
+            // Add similar data for other plants...
+        };
 
-            const plantingTime = plantingTimes[plantType][zone];
+        const plantingTime = plantingTimes[plantType]?.[zone];
+        if (plantingTime) {
             plantingResult.textContent = `Best time to plant ${plantType.replace(/([A-Z])/g, ' $1').toLowerCase()}: ${plantingTime}`;
+        } else {
+            plantingResult.textContent = `Sorry, planting information for ${plantType.replace(/([A-Z])/g, ' $1').toLowerCase()} in Zone ${zone} is not available.`;
+        }
+    }
+
+    function getWateringFrequency() {
+        const wateringType = document.getElementById('wateringType').value;
+        const wateringResult = document.getElementById('wateringResult');
+
+        if (!wateringType) {
+            wateringResult.textContent = 'Please select a plant type.';
+            return;
         }
 
-        function getWateringFrequency() {
-            const wateringType = document.getElementById('wateringType').value;
-            const wateringResult = document.getElementById('wateringResult');
+        const wateringFrequencies = {
+            tomatoes: 3,
+            cucumbers: 3,
+            bellPeppers: 2,
+            jalapenos: 2,
+            blueberries: 2,
+            raspberries: 2,
+            blackberries: 2,
+            sweetPeppers: 2,
+            carrots: 1,
+            onions: 1,
+            garlic: 1,
+            sweetPotatoes: 2,
+            potatoes: 2,
+            marigolds: 3,
+        };
 
-            if (!wateringType) {
-                wateringResult.textContent = 'Please select a plant type.';
-                return;
-            }
-
-            const wateringFrequencies = {
-                tomatoes: 3,
-                cucumbers: 3,
-                bellPeppers: 2,
-                jalapenos: 2,
-                blueberries: 2,
-                raspberries: 2,
-                blackberries: 2,
-                sweetPeppers: 2,
-                carrots: 1,
-                onions: 1,
-                garlic: 1,
-                sweetPotatoes: 2,
-                potatoes: 2,
-                marigolds: 3
-            };
-
-            const frequency = wateringFrequencies[wateringType];
+        const frequency = wateringFrequencies[wateringType];
+        if (frequency) {
             wateringResult.textContent = `Water ${wateringType.replace(/([A-Z])/g, ' $1').toLowerCase()} ${frequency} time(s) per week.`;
+        } else {
+            wateringResult.textContent = `Watering information for ${wateringType.replace(/([A-Z])/g, ' $1').toLowerCase()} is not available.`;
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
